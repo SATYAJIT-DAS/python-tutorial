@@ -1,4 +1,4 @@
-fp= open('filetest.txt', 'w+')
+fp= open('filetestw.txt', 'w+')
 reply= input("enter x and y separeted by spaces: ")
 pieces= reply.split()
 x=float(pieces[0]);

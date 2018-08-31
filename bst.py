@@ -1,21 +1,36 @@
-def bst(alist,target):
-    mid = len(alist)//2 #it will divide list into two part at this point
+# def binarySearch(alist, item):
+#     first = 0
+#     last = len(alist)-1
+#     found = False
+   
+#     while first<=last and not found:
+#         midpoint = (first + last)//2
+#     if alist[midpoint] == item:
+#         found = True
+#     else:
+#         if item < alist[midpoint]:
+#             last = midpoint-1
+#         else:
+#             first = midpoint+1 
+#     return found
 
-    if target == alist[mid] :
-        return mid
+  
+# testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
+# print(binarySearch(testlist, 3))
+# print(binarySearch(testlist, 13))
+def binary search(data, target, low, high):
+”””Return True if target is found in indicated portion of a Python list.
 
-    elif target < alist[mid] :
-        alist=alist[:mid]
-        bst(alist,target)
-    elif target > alist[mid]:
-        alist=alist[mid:]
-        bst(alist,target)
+ The search only considers the portion from data[low] to data[high] inclusive.
+ ”””
+    if low > high:
+        return False # interval is empty; no match
     else:
-        return "not found"
-
-alist=[10,23,25,36,64,78,89,98]
-result=bst(alist,23)
-if result =="not found":
-    print ("Your target is not in list")
-else :
-    print("your target is in {} no index of list ".format(result))
+        mid = (low + high) // 2
+        if target == data[mid]: # found a match
+            return True
+        elif target < data[mid]:
+             # recur on the portion left of the middle
+            return binary search(data, target, low, mid − 1)
+        else:
+            return binary search(data, target, mid + 1, high)
